@@ -1,0 +1,92 @@
+page-login {
+  .logo {
+    padding: 20px 0;
+    min-height: 100px;
+    text-align: center;
+
+    img {
+      max-width: 150px;
+    }
+  }
+
+
+  .padding {
+
+    background: url('../assets/login.png');
+
+  }
+
+  .card-background {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 15%;
+      font-size: 2.0em;
+      width: 93%;
+      font-weight: bold;
+      //color: #fff;
+    }
+  }
+
+  .card-link {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 55%;
+      font-size: 2.0em;
+      width: 93%;
+      font-weight: bold;
+      background-color: transparent
+    }
+  }
+  .error-box {
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 11px;
+    color: white;
+    font-style: italic;
+    border:  1px solid #FF8B51;
+    border-radius: 3px;
+    background: #FFC58C;
+  }
+
+  .input-item{
+    background-color: transparent;
+    border-buttom-color: rgba(255,255,255,0.04);
+  }
+
+  .input-label{
+    font-family: arial, sans-serif;
+    color: #FFFFFF;
+    font-size: 20px;
+    letter-spacing: 1.2pt;
+    border-bottom: 1px solid #FFFFFF !important;
+    margin:0px 10px 0px 10px;
+  }
+
+  .input-placeholder ::-moz-placeholder {
+    color:white;
+    }
+
+  .input-placeholder::-webkit-input-placeholder {
+    color: white;
+  }
+
+
+
+
+
+  //.error .item-inner {
+  //  border-bottom: 3px solid red !important;
+  //}
+}

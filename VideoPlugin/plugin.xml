@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.plugin.videoPlugin" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>VideoPlugin</name>
+  <js-module name="VideoPlugin" src="www/VideoPlugin.js">
+    <clobbers target="cordova.plugins.VideoPlugin" />
+  </js-module>
+  <!--iOS-->
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="VideoPlugin">
+        <param name="ios-package" value="VideoPlugin" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/src/category/UIControl+YYAdd.h"/>
+    <source-file src="src/ios/src/category/UIControl+YYAdd.m"/>
+
+    <header-file src="src/ios/src/category/UIView+YYAdd.h"/>
+    <source-file src="src/ios/src/category/UIView+YYAdd.m"/>
+
+    <source-file src="src/ios/VideoPlugin.m" />
+    <header-file src="src/ios/LFLivePreview.h" />
+    <source-file src="src/ios/LFLivePreview.m" />
+
+    <framework src="libstdc++.tbd" weak="true" />
+    <framework src="src/ios/src/framework/libPods-LFLiveKitDemo.a" custom="true" />
+    <framework src="LFLiveKit" type="podspec" spec="~> 2.6" />
+    <resource-file src="src/ios/src/images/camra_beauty_close@2x.png" />
+    <resource-file src="src/ios/src/images/camra_beauty_close@3x.png" />
+    <resource-file src="src/ios/src/images/camra_beauty@2x.png" />
+    <resource-file src="src/ios/src/images/camra_beauty@3x.png" />
+    <resource-file src="src/ios/src/images/camra_preview@2x.png" />
+    <resource-file src="src/ios/src/images/camra_preview@3x.png" />
+    <resource-file src="src/ios/src/images/close_preview@2x.png" />
+    <resource-file src="src/ios/src/images/close_preview@3x.png" />
+    <resource-file src="src/ios/src/images/ios-29x29.png" />
+  </platform>
+</plugin>

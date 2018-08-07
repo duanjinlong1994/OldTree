@@ -1,0 +1,93 @@
+page-home {
+  .secoundRow {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-small;
+    //background-color:#e6e6e6;
+  }
+  .OldTreeResult button {
+    padding: 0px;
+    margin: 0px;
+    font-size: x-small;
+
+  }
+
+  .fabList {
+    position: fixed !important;
+    z-index: 999;
+    top: 2%;
+    right: 4%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    &.activated {
+      background: #8d8d8d
+    }
+    .icon {
+      color: #6b6b6b;
+      font-size: 40px;
+    }
+    .toolbar-title-md {
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-top: 0;
+      padding-bottom: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #424242;
+    }
+    .hide {
+      display: none;
+    }
+  }
+
+
+  ion-app.md [padding-top],
+  ion-app.md [padding-top] .scroll-content {
+    padding-top: 1px !important;
+  }
+
+  .ionlabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%
+  }
+  .fixed-content {
+    margin-top: 0px;
+    border:0px;
+  }
+
+  .buttonclass button {
+    height: 2.0rem;
+    margin-left: 0rem;
+    padding-left: 0.5rem;
+    margin-right: 0rem;
+    padding-right: 0rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+  .ionheader {
+    //height:35%;
+    //box-sizing: none;
+    background-size: 100% 0px;
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+  }
+  .buttonclass {
+    height: 10%;
+    margin-bottom: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
+  .iontoolbar {
+    height: 70%;
+  }
+}
+
+

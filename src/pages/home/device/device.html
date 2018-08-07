@@ -1,0 +1,47 @@
+<!--
+  Generated template for the Device page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>设备信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card >
+    <ion-list  inset>
+      <ion-item> <ion-icon ios="ios-home-outline"></ion-icon>
+        <div class="name">机构 : </div>
+        <div class="detail">{{ dev_org }}</div>
+
+      </ion-item>
+      <ion-item><ion-icon ios="ios-cog-outline"></ion-icon>
+        <div class="name">型号 : </div>
+        <div class="detail">{{dev_mod}}</div>
+      </ion-item>
+
+      <ion-item><ion-icon ios="ios-keypad-outline"></ion-icon>
+        <div class="name"> SIM :  </div>
+        <div class="detail">{{dev_simNo}}</div>
+      </ion-item>
+      <ion-item><ion-icon ios="ios-game-controller-a-outline"></ion-icon>
+        <div class="name">状态 : </div>
+        <div class="detail">{{dev_status}}</div>
+      </ion-item>
+      <ion-item><ion-icon ios="ios-pulse-outline"></ion-icon>
+        <div class="name"> 心跳 : </div>
+        <div class="detail">{{dev_latestHeartbeat}}</div>
+      </ion-item>
+      <ion-item><ion-icon ios="ios-paper-outline"></ion-icon>
+        <div class="name"> 备注信息 : </div>
+
+        <div class="detail">{{dev_note}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+

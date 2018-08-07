@@ -1,0 +1,290 @@
+
+
+<ion-header class="ionheader" no-border style="border: 0px !important;">
+    <ion-navbar color="headercolor" style="text-align:center;min-height:0px;height:15%">
+        <button ion-button menuToggle (click)="openMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title class="navbartitle">主页</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar color="headercolor" class = "iontoolbar">
+
+        <div align="center" padding-top="0px"><ion-label>编号：{{chooseTreeNum}} 树名：{{chooseTreeName}} 级别：{{chooseTreelevel}}</ion-label></div>
+        <div align="center" padding-top="0px"><ion-icon small name="ios-pin-outline" align="center">XX省XX市XXX</ion-icon></div>
+
+        <ion-row padding-top="0px">
+            <ion-col col-2.4>
+                <img src = "assets/3.png" (click)="gotoTreeDetail(chooseTreeData)">
+            </ion-col>
+
+            <ion-col col-2.4>
+                <img src = "assets/2.png" (click)="gotoDeviceInfo(chooseTreeData.deviceId)">
+            </ion-col>
+
+            <ion-col col-2.4>
+                <img src = "assets/4.png" (click)="gotoUpload(chooseTreeData)">
+            </ion-col>
+
+            <ion-col col-2.4>
+                <img src = "assets/5.png" (click)="gotoStatistic(chooseTreeData)">
+            </ion-col>
+
+            <ion-col col-2.4>
+                <img src = "assets/6.png" (click)="gotoTask(chooseTreeData)">
+            </ion-col>
+
+        </ion-row>
+        <ion-row margin-top="0px">
+            <ion-col col-2.4 align="middle">
+                详情
+            </ion-col>
+
+            <ion-col col-2.4 align="middle">
+                设备
+            </ion-col>
+
+            <ion-col col-2.4 align="middle">
+                上传
+            </ion-col>
+
+            <ion-col col-2.4 align="middle">
+                数据
+            </ion-col>
+
+            <ion-col col-2.4 align="middle">
+                任务
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+
+    <ion-row>
+        <ion-col class = "buttonclass" col-4 >
+            <button ion-button color="dark" clear (click)="ischoose(0)">
+                <ion-label class="ionlabel">{{organizationName}}</ion-label>
+                <ion-icon name = "md-arrow-dropdown"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col class = "buttonclass" col-4>
+            <button ion-button color="dark" clear (click)="ischoose(1)">
+                <ion-label class="ionlabel">{{projectName}}</ion-label>
+                <ion-icon name = "md-arrow-dropdown"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col class = "buttonclass" col-4>
+            <button ion-button color="dark" clear (click)="ischoose(2)">
+                <ion-label class="ionlabel">{{collectionName}}</ion-label>
+                <ion-icon name = "md-arrow-dropdown"></ion-icon>
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-header>
+
+
+
+
+<ion-content>
+    <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="下拉刷新"
+                refreshingSpinner="circles"
+                refreshingText="正在刷新...">
+        </ion-refresher-content>
+    </ion-refresher> -->
+
+
+
+
+    <div position="relative" style="padding:0px 0px 0px 0px;">
+        <div *ngIf="isOrganchoose" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999">
+            <ion-list>
+                <button class="buttonclass" color="dark"(click)="organChange(000,'全部')" ion-button clear>
+                    全部
+                </button>
+            </ion-list>
+            <ion-list>
+                <button class="buttonclass" color="dark" *ngFor="let item of menu" value="{{item.id}}" (click)="organChange(item.id,item.name)" ion-button clear>
+                    {{item.name}}
+                </button>
+            </ion-list>
+        </div>
+        <div *ngIf="isProject" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999;max-height:200px;overflow:scroll">
+            <ion-list  *ngFor="let item of projectData" (click)="projectChange(item.treeid,item.cname)" >
+                <button class="buttonclass" color="dark" ion-button clear>
+                    {{item.cname}}
+                </button>
+            </ion-list>
+        </div>
+        <div *ngIf="isCollectionPoint" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999;max-height:60%;overflow:scroll">
+            <ion-list  *ngFor="let item of collectionData" (click)="collectionChange(item.id,item.cName)" >
+                <button class="buttonclass" color="dark" ion-button clear>
+                    {{item.cName}}
+                </button>
+            </ion-list>
+        </div>
+
+        <div *ngIf="isOrganchoose||isProject||isCollectionPoint" style="padding:0px 0px 0px 0px;position:fixed;width:100%;height:100%;background-color:rgba(0,0,0,0.1);opacity:0.3;filter:Alpha(ipacity=50);z-index:9999">
+
+        </div>
+
+        <div position="absolute" top="10px">
+            <!--<ion-card>
+                <accordionlist
+                        title="选择操作"
+                        textColor="#FFF"
+                        hasMargin="false"
+                        headerColor="#007aff">
+                    <ion-list>
+                        <app-tree [treeLists] ="menu" (ItemSelect)="selectOrgan($event)"></app-tree>
+                    </ion-list>
+                </accordionlist>
+                <div></div>
+                <accordionlist
+                title="选择操作"
+                textColor="#FFF"
+                hasMargin="false"
+                headerColor="#007aff">
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>选择古树</ion-label>
+                            <ion-select name="project" [(ngModel)]="project" (ionChange)="projectChange()">
+                                <ion-option *ngFor="let item of projectData" value="{{item.treeid}}">{{item.cname}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-buttons end>
+                            <button ion-button (click)="QueryOfHome()" clear small>
+                                <ion-icon name="ios-search">
+                                    查询
+                                </ion-icon>
+                            </button>
+                        </ion-buttons>
+                    </ion-list>
+                </accordionlist>
+
+            </ion-card>-->
+
+            <!-- <ion-card padding style="font-size-adjust: inherit"> -->
+
+
+            <div [ngSwitch]="collectionPointShow">
+                <ion-list *ngSwitchCase="'OldTree'">
+                    <ion-grid *ngFor="let item of OldTreeData">
+                        <ion-card (click)="getMessage(item)">
+                            <ion-row row-4>
+                                <ion-col col-2>
+                                    <img src = "assets/2.jpg">
+                                </ion-col>
+                                <ion-col>
+                                    <ion-row>
+                                        古树名木保护系统{{prjName}}
+                                    </ion-row>
+                                    <ion-row>
+                                        {{item.cname}}{{item.siteName}}
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-card>
+                    </ion-grid>
+                </ion-list>
+                <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+                    <ion-infinite-scroll-content
+                            loadingSpinner="bubbles"
+                            loadingText="Loading more data...">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </div>
+
+
+
+
+
+
+
+            <!-- <div [ngSwitch]="collectionPointShow">
+                <ion-list *ngSwitchCase="'OldTree'">
+
+            <ion-grid class="OldTreeResult"  *ngFor="let item of OldTreeData">
+                <ion-card padding style="font-size-adjust: inherit" (click)="getMessage(item)">
+                    <ion-row >
+                <ion-col col-6 style="align-items: flex-start;">
+                    <button clear ion-button (click)="gotoMap(item.latitude,item.longitude,item.projectName,item.name)">
+                    <ion-icon name="ios-pin-outline"></ion-icon>
+                    {{item.cname}}{{item.siteName}}
+                    </button>
+                </ion-col> -->
+
+
+
+
+            <!--<ion-col col-2>-->
+            <!--<button ion-button *ngIf="!array_contain(attentionPoints,item)" clear class="hasAttention" (click)="addAttention(item)">-->
+            <!--<ion-icon name="ios-heart-outline"></ion-icon>-->
+            <!--关注-->
+            <!--</button>-->
+            <!--<button ion-button *ngIf="array_contain(attentionPoints,item)" clear color="purple" (click)="delAttention(item)">-->
+            <!--<ion-icon name="ios-heart"></ion-icon>-->
+            <!--取消关注-->
+            <!--</button>-->
+            <!--&lt;!&ndash;<button ion-button *ngIf="following" class="follow-button" small color="purple" (click)="addOrDelAttention()"><ion-icon name="ios-ion-icon></button>&ndash;&gt;-->
+            <!--</ion-col>-->
+
+
+
+
+            <!-- <ion-col col-2 >
+                <button ion-button clear  (click)="gotoTreeDetail(item)">
+                <ion-icon name="ios-cog-outline"></ion-icon>
+                详情
+                </button>
+            </ion-col>
+            <ion-col col-2></ion-col>
+            <ion-col col-2 style="text-align: right">
+                <button ion-button clear  (click)="gotoDeviceInfo(item.deviceId)">
+                <ion-icon name="ios-cog-outline"></ion-icon>
+                设备
+                </button>
+            </ion-col>
+            </ion-row>
+            <ion-row  class="secoundRow">
+                        <ion-col col-6 style="align-items: flex-start;">
+                            {{item.note}}
+                        </ion-col>
+
+                        <ion-col col-2>
+                            <button ion-button clear class="hasAttention" (click)="gotoStatistic(item)">
+                                <ion-icon name="ios-podium-outline"></ion-icon>
+                                数据
+                            </button>
+                        </ion-col>
+
+                        <ion-col col-2>
+                            <button ion-button clear class="hasAttention" (click)="gotoUpload(item)">
+                                <ion-icon name="ios-share-outline"></ion-icon>
+                                上传
+                            </button>
+                        </ion-col>
+                        <ion-col col-2 style="text-align: right">
+                            <button ion-button clear  (click)="gotoTask(item)">
+                                <ion-icon name="ios-clipboard-outline"></ion-icon>
+                                任务
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card> -->
+            <!-- <ion-infinite-scoll on-infinite="loadMore()" ng-if="!domore" distance="1%"></ion-infinite-scoll>-->
+            <!-- </ion-grid>
+            </ion-list>
+        </div> -->
+            <!-- </ion-card> -->
+        </div>
+    </div>
+</ion-content>
+
+
+

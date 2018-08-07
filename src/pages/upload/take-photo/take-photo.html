@@ -1,0 +1,74 @@
+<!--
+  Generated template for the TakePhoto page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar  color="primary" >
+        <ion-title>
+            选择照片
+        </ion-title>
+
+        <ion-buttons right padding-right="10px">
+            <button type="button" ion-button block (click)="uploadImage()">上传</button>
+        </ion-buttons>
+        </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+        <ion-row>
+            <ion-col col-2>
+                <button ion-button (click)="onSelectButtonClick()" clear style="font-size: small; color: #222222;">地址：</button>
+            </ion-col>
+            <ion-col col-10>
+                <button ion-button (click)="onSelectButtonClick()" clear class="selectButton" >{{organizationName}}
+                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
+                <button ion-button (click)="organChange()" clear class="selectButton" >{{projectName}}
+                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
+                <button ion-button (click)="projectChange()" clear class="selectButton" >{{collectionPointName}}
+                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
+            </ion-col>
+        </ion-row>
+    <!--<ion-select  name="oraganization" [(ngModel)]="organization" (ionChange)="organChange()" placeholder="选择机构" interface="popover" style="max-width: 40%" >-->
+    <!--<ion-option  [value]="organizationId" *ngIf="isHomeToUpload" selected="true" disabled>{{organizationName}}</ion-option>-->
+    <!--<ion-option  [value]="organizationId" *ngIf="isTaskToUpload" selected="true" disabled>{{organizationName}}</ion-option>-->
+    <!--<ion-option *ngFor="let item of organData" value="{{item.id}}" >{{item.name}}</ion-option>-->
+    <!--</ion-select>-->
+    <!---->
+
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--<ion-grid>-->
+    <!--<ion-row>-->
+    <!--<ion-col col-4>-->
+    <!--<ion-label>选择项目</ion-label>-->
+    <!--<ion-select name="project" [(ngModel)]="project" (ionChange)="projectChange()" placeholder="选择树种" interface="popover" style="min-width:25% ;max-width: 33%">-->
+    <!--<ion-option  [value]="projectId" *ngIf="isHomeToUpload" selected="true" disabled>{{projectName}}</ion-option>-->
+    <!--<ion-option  [value]="projectId" *ngIf="isTaskToUpload" selected="true" disabled>{{projectName}}</ion-option>-->
+    <!--<ion-option *ngFor="let item of projectData" value="{{item.treeid}}">{{item.cname}}</ion-option>-->
+    <!--</ion-select>-->
+    <!--</ion-col>-->
+    <!--<ion-col col-4>-->
+    <!--<ion-label>选择采集点</ion-label>-->
+    <!--<ion-select name="collectionPoint" [(ngModel)]="collectionPoint" (ionChange)="collectionPointChange()" placeholder="选择测试点" interface="popover" style="max-width: 34%">-->
+    <!--<ion-option  [value]="collectionPointId" *ngIf="isHomeToUpload" selected="true" disabled>{{collectionPointName}}</ion-option>-->
+    <!--<ion-option *ngFor="let item of collectionData" value="{{item.id}}">{{item.siteName}}</ion-option>-->
+    <!--</ion-select>-->
+    <!--</ion-item>-->
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--</ion-grid>-->
+
+
+
+
+
+    <img [src]="avatarPath" width="100%" tappable (click)="selectPhotoMethod()">
+
+    <ion-item  class="note">
+        <ion-textarea type="text" [(ngModel)]="note" placeholder="照片描述..." rows="5" style="margin: 1px;" ></ion-textarea>
+    </ion-item>
+
+</ion-content>
+

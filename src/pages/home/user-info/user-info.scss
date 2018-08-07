@@ -1,0 +1,26 @@
+page-user-info {
+
+}
+
+ion-modal.inset-modal {
+  // transparent black background overlay
+  background-color: rgba(0, 0, 0, .5) !important;
+  transition: opacity .25s ease-in-out;
+  padding: 20vh 10vw;
+}
+
+.content-padding{
+  padding: 0px;
+}
+
+.item-group-padding{
+  margin:20px 0px 0px 0px;
+}
+
+.list-title{
+  padding-left:20px;color: #488aff
+}
+
+.list-message{
+  color:#222222;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "oldtree",
+  "app_id": "com.xd.oldtree",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,55 @@
+<ion-header >
+    <ion-navbar color="primary"  style="text-align:center">
+        <ion-title>
+            统计
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid *ngIf="showOldTree">
+        <ion-row>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(0)" src="assets/statistics/空气温度.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(0)"><p>空气温度</p></button><br>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(1)" src="assets/statistics/土壤温度.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(1)"><p>土壤温度</p></button><br>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(2)" src="assets/statistics/空气湿度.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(2)"><p>空气湿度</p></button><br>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(3)" src="assets/statistics/土壤湿度.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(3)"><p>土壤湿度</p></button><br>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(4)" src="assets/statistics/树木倾斜度.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(4)"><p>树木倾斜度</p></button><br>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div style="text-align: center">
+                        <ion-img clear (click)="gotoStatistic(5)" src="assets/statistics/土壤PH值.png"></ion-img><br>
+                        <button ion-button clear (click)="gotoStatistic(5)"><p>土壤PH值</p></button><br>
+                </div>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

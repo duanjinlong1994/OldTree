@@ -1,0 +1,25 @@
+page-take-photo {
+  .note {
+    border: solid darkgray 1px;
+    background: transparent;
+    height:20%;
+    background-image: none !important ;
+    border-bottom: none !important;
+    padding: 1px;
+  }
+
+  .select{
+    border-left: solid darkgray 1px;
+    text-align: center;
+   // border-top: solid darkgray 1px;
+    border-radius: 1px;
+    background-color:ghostwhite;
+    padding: 2%;
+  }
+
+  .selectButton{
+    font-size: small;
+    padding: 0px;
+    max-width: 100%;
+  }
+}
