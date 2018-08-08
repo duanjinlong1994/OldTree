@@ -42,7 +42,7 @@ import { PaginationComponentModule } from '../components/pagination/pagination.m
       IonicStorageModule.forRoot(),
       BrowserModule,
       IonicModule.forRoot(MyApp,{
-      backButtonText:'返回',
+      backButtonText:'',
       }),
       LoginPageModule,
       MenuPageModule,

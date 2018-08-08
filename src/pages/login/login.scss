@@ -9,6 +9,10 @@ page-login {
     }
   }
 
+  .list-class{
+    background-image: none !important ;
+    border-bottom: none !important;
+  }
 
   .padding {
 
@@ -80,6 +84,12 @@ page-login {
 
   .input-placeholder::-webkit-input-placeholder {
     color: white;
+  }
+
+  .toolbar-buttom{
+    background-color:transparent ;
+    position: absolute;
+    top: 91%;
   }
 
 

@@ -13,7 +13,7 @@ import {expand} from "rxjs/operator/expand";
 })
 export class AccordionlistComponent {
 
-    @Input() headerColor: string = '#F53D3D';
+    @Input() headerColor: string = '#33A1C9';
     @Input() textColor: string = '#FFF';
     @Input() contentColor: string = '#FFF';
     @Input() title: string;

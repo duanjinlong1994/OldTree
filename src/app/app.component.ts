@@ -22,7 +22,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class MyApp {
   @ViewChild('content') nav;
   rootPage:any = LoginPage;
-    UserRealName:string="默认用户";
+    UserRealName:string="";
     userInfo:UserInfo;
   accountId:number;
 
@@ -113,6 +113,8 @@ export class MyApp {
 
     gotoPageUserinfo(){
       this.nav.push(UserInfoPage);
+        this.accountId=(this.accountService.getAccount() as any).accountId;
+        this.storageUserInfo(this.accountId);
     }
 
 
