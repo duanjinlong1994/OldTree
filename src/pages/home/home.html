@@ -1,7 +1,7 @@
 
 
 <ion-header class="ionheader" no-border style="border: 0px !important;">
-    <ion-navbar color="headercolor" style="text-align:center;min-height:0px;height:15%">
+    <ion-navbar color="headercolor" style="text-align:center;min-height:0px;height:50px">
         <button ion-button menuToggle (click)="openMenu()">
             <ion-icon name="menu"></ion-icon>
         </button>
@@ -13,9 +13,9 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-    <ion-toolbar color="headercolor" class = "iontoolbar">
+    <!-- <ion-toolbar color="headercolor" class = "iontoolbar">
 
-        <div align="center" padding-top="0px"><ion-label>编号：{{chooseTreeNum}} 树名：{{chooseTreeName}} 级别：{{chooseTreelevel}}</ion-label></div>
+         <div align="center" padding-top="0px"><ion-label>编号：{{chooseTreeNum}} 树名：{{chooseTreeName}} 级别：{{chooseTreelevel}}</ion-label></div>
         <div align="center" padding-top="0px"><ion-icon small name="ios-pin-outline" align="center">XX省XX市XXX</ion-icon></div>
 
         <ion-row padding-top="0px">
@@ -61,7 +61,7 @@
                 任务
             </ion-col>
         </ion-row>
-    </ion-toolbar>
+    </ion-toolbar>  -->
 
     <ion-row>
         <ion-col class = "buttonclass" col-4 >
@@ -133,7 +133,7 @@
 
         </div>
 
-        <div position="absolute" top="10px">
+        <div position="absolute" top="1px">
             <!--<ion-card>
                 <accordionlist
                         title="选择操作"
@@ -174,30 +174,115 @@
 
             <div [ngSwitch]="collectionPointShow">
                 <ion-list *ngSwitchCase="'OldTree'">
-                    <ion-grid *ngFor="let item of OldTreeData">
-                        <ion-card (click)="getMessage(item)">
+                    <!-- <ion-item *ngFor="let item of OldTreeData">
+                            <ion-row >
+                                    <ion-col col-2>
+                                        <img src = "assets/2.jpg" >
+                                    </ion-col>
+                                    </ion-row>
+
+                             <ion-grid (click)="getMessage(item)">
+                                    
+                                        <ion-row>
+                                            <ion-col col-2>
+                                                <img src = "assets/2.jpg">
+                                            </ion-col>
+                                            <ion-col>
+                                                <ion-row>
+                                                    古树名木保护系统{{prjName}}
+                                                </ion-row>
+                                                <ion-row>
+                                                    {{item.cname}}{{item.siteName}}
+                                                </ion-row>
+                                            </ion-col>
+                                        </ion-row>
+                                    
+                                </ion-grid>     -->
+                    <!-- </ion-item>  -->
+
+
+
+
+                    <div *ngFor="let item of OldTreeData" class = "oldtreelist">
+                    <ion-grid  (click)="getMessage(item)">
+                        
                             <ion-row row-4>
                                 <ion-col col-2>
-                                    <img src = "assets/2.jpg">
+                                    <img src = "assets/2.jpg" >
                                 </ion-col>
                                 <ion-col>
-                                    <ion-row>
-                                        古树名木保护系统{{prjName}}
-                                    </ion-row>
-                                    <ion-row>
+                                    <div class="oldtreeitem">
+                                        古树名木保护系统{{prjName}}<br>
                                         {{item.cname}}{{item.siteName}}
-                                    </ion-row>
+                                    </div>
                                 </ion-col>
                             </ion-row>
-                        </ion-card>
+
                     </ion-grid>
+                    <div *ngIf="isisis==item.treeid&&ischooseitem">
+                            <ion-row padding-top="0px" id = "row1">
+                                <ion-col col-1>
+                                </ion-col>
+                                <ion-col col-2>
+                                    <button clear id = "img3" (click)="gotoTreeDetail(chooseTreeData)">
+                                    </button>
+                                </ion-col>
+                                
+                                <ion-col col-2>
+                                        <button clear id = "img4" (click)="gotoDeviceInfo(chooseTreeData.deviceId)">
+                                            </button>
+                                </ion-col>
+                                
+                                <ion-col col-2>
+                                        <button clear id = "img2" (click)="gotoUpload(chooseTreeData)">
+                                            </button>
+                                </ion-col>
+                                
+                                <ion-col col-2>
+                                        <button clear id = "img5" (click)="gotoStatistic(chooseTreeData)">
+                                            </button>
+                                </ion-col>
+                                
+                                <ion-col col-2>
+                                        <button clear id = "img1" (click)="gotoTask(chooseTreeData)">
+                                            </button>
+                                </ion-col>
+                                <ion-col col-1>
+                                </ion-col>
+                            </ion-row>
+                            <!-- <ion-row margin-top="0px">
+                                <ion-col col-1>
+
+                                </ion-col>
+                                <ion-col col-2  font-size="0.5rem" align="middle">
+                                    详情
+                                </ion-col>
+                                
+                                <ion-col col-2 align="middle">
+                                    设备
+                                </ion-col>
+                                
+                                <ion-col col-2 align="middle">
+                                    上传
+                                </ion-col>
+                                
+                                <ion-col col-2 align="middle">
+                                    数据
+                                </ion-col>
+                                
+                                <ion-col col-2 align="middle">
+                                    任务
+                                </ion-col>
+                            </ion-row> -->
+                    </div>
+                    </div>
                 </ion-list>
-                <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+                 <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
                     <ion-infinite-scroll-content
                             loadingSpinner="bubbles"
                             loadingText="Loading more data...">
                     </ion-infinite-scroll-content>
-                </ion-infinite-scroll>
+                </ion-infinite-scroll> 
             </div>
 
 

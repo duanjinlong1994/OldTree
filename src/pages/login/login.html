@@ -1,7 +1,7 @@
 <ion-header style="text-align:center">
 
-    <ion-navbar color="primary"  >
-        <ion-title>古树名木保护系统</ion-title>
+    <ion-navbar color="headercolor"  >
+        <ion-title>古树保护系统</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -13,7 +13,7 @@
     <ion-card class="card-background">
         <!--<img src="../../assets/formBackground.png"/>-->
         <form [formGroup]="loginForm" class="card-title" (ngSubmit)="onSubmit(loginForm.value)">
-            <ion-list  class="list-class" no-lines>
+            <ion-list insert no-lines>
                 <ion-item class="input-item" >
                     <!--        <ion-label><ion-icon name="ios-person-outline"></ion-icon></ion-label>-->
                            <ion-input class="input-label" placeholder="用户名" type="text" [formControl]="username"  clearInput></ion-input>
@@ -21,20 +21,16 @@
 
                        <ion-item class="input-item" >
                            <ion-input class="input-label" placeholder="密码" type="password" [formControl]="password" clearInput></ion-input>
-                           <ion-toggle (ionChange)="toggled()" [checked]="isToggled" color="primary" ></ion-toggle>
+                           <ion-toggle (ionChange)="toggled()" [checked]="isToggled" color="headercolor" ></ion-toggle>
                        </ion-item>
 
 
                        <ion-item class="input-item" >
                            <ion-input class="input-label"  placeholder="验证码" type="text" [formControl]="randomCode" clearInput></ion-input>
                            <ion-input style="text-align: right;background: image('../../assets/randomCode.jpg')" value="{{randomCodeImage}}" disabled="true"></ion-input>
-                           <ion-input disabled="true" style="max-width: 10%"> </ion-input>
                        </ion-item>
 
-
                    </ion-list>
-            <div padding>
-            </div>
                    <div padding>
                        <button ion-button   round block  type="submit" >登  陆</button>
 
@@ -43,7 +39,7 @@
                </form>
 
            </ion-card>
-    <ion-item class="toolbar-buttom" no-lines>
+    <ion-item style=" background-color:transparent ; position: absolute; top: 85%;" no-lines="">
             <button ion-button full  favorite (click)="setServerIP()" clear  style="font-size: medium; " color="primary">
                修改IP地址？
             </button>

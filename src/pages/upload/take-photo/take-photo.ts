@@ -368,23 +368,23 @@ export class TakePhotoPage {
         selectAlert.setTitle('请选择机构');
         for(let item of items)
         {
-            if(item['id']===this.organizationId){
+            // if(item['id']===this.organizationId){
+            //     selectAlert.addInput({
+            //         type:'radio',
+            //         label:item['name'],
+            //         value:item['id'],
+            //         checked:true
+            //     });
+            // }
+            // else {
                 selectAlert.addInput({
                     type:'radio',
-                    label:item['name'],
-                    value:item['id'],
-                    checked:true
-                });
-            }
-            else {
-                selectAlert.addInput({
-                    type:'radio',
-                    label:item['name'],
-                    value:item['id'],
+                    label:'古树名木保护系统',
+                    value:'1',
                     checked:false
                 });
             }
-        }
+     //   }
         selectAlert.addButton('取消');
         selectAlert.addButton({
             text:'选择',

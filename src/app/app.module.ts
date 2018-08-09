@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 
 import { MenuPageModule } from '../pages/menu/menu.module';
 import { LoginPageModule } from '../pages/login/login.module';
-//import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { AttentionPageModule } from '../pages/attention/attention.module';
 import { StatisticPageModule } from '../pages/statistic/statistic.module';
@@ -30,6 +30,7 @@ import { HttpModule } from '@angular/http';
 import { HTTP } from '@ionic-native/http';
 import { AccountService } from '../providers/account-service/account-service';
 import { PaginationComponentModule } from '../components/pagination/pagination.module';
+import { PopoverPageModule } from '../pages/home/popover/popover.module';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PaginationComponentModule } from '../components/pagination/pagination.m
       }),
       LoginPageModule,
       MenuPageModule,
-     // TabsPageModule,
+      TabsPageModule,
+      PopoverPageModule,
       HomePageModule,
       AttentionPageModule,
       UploadPageModule,

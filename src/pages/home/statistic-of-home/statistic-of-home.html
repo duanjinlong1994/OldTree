@@ -4,16 +4,15 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
     <ion-navbar color="primary">
-        <ion-title style="text-align:center">
-            {{projectName}} {{pointName}}数据统计
-        </ion-title>
-        <ion-buttons right>
-            <button ion-button disabled="disabled" style="width:40px">
-            </button>
-        </ion-buttons>
+        {{cName}} {{siteName}}统计信息
     </ion-navbar>
+    <ion-buttons end >
+        <button ion-button icon-only >
+            <ion-icon name="more-re" ></ion-icon>
+        </button>
+    </ion-buttons> -->
     <!--<ion-toolbar color="primary" style="text-align:center">-->
         <!--<ion-title>-->
             <!---->
@@ -25,6 +24,20 @@
             <!--</button>-->
         <!--</ion-buttons>-->
     <!--</ion-toolbar>-->
+<!-- </ion-header> -->
+
+<ion-header >
+    <ion-navbar color="headercolor"  style="text-align:center">
+        <ion-title>
+            {{cName}} {{siteName}}统计信息
+        </ion-title>
+        <ion-buttons end >
+            <button ion-button icon-only >
+                <ion-icon name="more-re" ></ion-icon>
+            </button>
+        </ion-buttons>
+        
+    </ion-navbar>
 </ion-header>
 
 <!--isPM25Display          : boolean = false;-->
@@ -79,7 +92,7 @@
                    headerColor="#007aff">
     </accordionlist>
 
-    <button ion-item detail-none (click)="showchartOfAirTemper()" no-lines style="background-color:#33A1C9; color:#ffffff" *ngIf="AirTempButton">
+    <button ion-item detail-none (click)="showchartOfAirTemper()" no-lines style="background-color: #33A1C9; color:#ffffff" *ngIf="AirTempButton">
         <ion-icon item-left name="ios-arrow-forward">
         </ion-icon>
         空气温度统计
@@ -88,12 +101,13 @@
     <accordionlist *ngIf="isAirTemperDisplay"
                    title="空气温度统计"
                    textColor="#FFF"
-                   hasMargin="false">
+                   hasMargin="false"
+                   headerColor="#33A1C9">
         <div #chartOfPM25></div>
         <!--<div #chartOfAirTemper></div>-->
     </accordionlist>
 
-    <button ion-item detail-none (click)="showchartOfAirHum()" no-lines style="background-color:#33A1C9; color:#ffffff" *ngIf="AirHumButton">
+    <button ion-item detail-none (click)="showchartOfAirHum()" no-lines style="background-color: #33A1C9; color:#ffffff" *ngIf="AirHumButton">
         <ion-icon item-left name="ios-arrow-forward">
         </ion-icon>
         空气湿度统计
@@ -102,7 +116,8 @@
     <accordionlist *ngIf="isAirHumDisplay"
                    title="空气湿度统计"
                    textColor="#FFF"
-                   hasMargin="false">
+                   hasMargin="false"
+                   headerColor="#33A1C9">
         <div #chartOfPM10></div>
     </accordionlist>
     <!-- <accordionlist *ngIf="isInclinDisplay"

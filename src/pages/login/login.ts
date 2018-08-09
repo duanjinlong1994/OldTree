@@ -97,7 +97,7 @@ export class LoginPage {
                         }
 
                         this.nativeService.hideLoading();
-                        this.navCtrl.setRoot(HomePage,data).then();
+                        this.navCtrl.setRoot(TabsPage,data).then();
                         this.accountId=(this.accountService.getAccount() as any).accountId;
                         this.storageUserInfo(this.accountId);
 

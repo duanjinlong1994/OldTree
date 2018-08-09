@@ -11,14 +11,16 @@ import { AccordionlistComponentModule } from '../../components/accordionlist/acc
 import { AppTreeComponentModule } from '../../components/app-tree/app-tree.module';
 import { PopoverPage} from './popover/popover';
 import { PhoneNumberPipe} from '../../pipes/phone-number/phone-number'
+import { IonicModule } from 'ionic-angular/module';
 @NgModule({
 
 
   declarations: [
-    HomePage, MapPage, TreeDetailPage, DevicePage, StatisticOfHomePage ,UserInfoPage, UserInfoEditPage,PopoverPage,PhoneNumberPipe,
+    HomePage, MapPage, TreeDetailPage, DevicePage, StatisticOfHomePage ,UserInfoPage, UserInfoEditPage,PhoneNumberPipe,
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
+    IonicModule.forRoot(PopoverPage),
       AccordionlistComponentModule,
       AppTreeComponentModule,
   ],
@@ -26,7 +28,7 @@ import { PhoneNumberPipe} from '../../pipes/phone-number/phone-number'
     HomePage
   ],
     entryComponents:[
-        MapPage, DevicePage, TreeDetailPage, UserInfoPage, UserInfoEditPage, StatisticOfHomePage,PopoverPage,
+        MapPage, DevicePage, TreeDetailPage, UserInfoPage, UserInfoEditPage, StatisticOfHomePage,
     ],
 
 })

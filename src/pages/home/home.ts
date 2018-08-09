@@ -42,6 +42,7 @@ export class HomePage implements OnInit{
     organizationName: string="选择网格";
     projectName: string="选择古树";
     projectId:any=0;
+    isisis:any=0;
     projectlevel:string="";
     sitename:string="";
     prjId: any=0;
@@ -68,6 +69,7 @@ export class HomePage implements OnInit{
     ischoosesencond:boolean = false;
     isProject:boolean = false;
     isCollectionPoint:boolean = false;
+    ischooseitem:boolean = false;
     pageSize: number = 0;
     pageNum: number = 0;
     pageOther: number = 0;
@@ -424,6 +426,8 @@ export class HomePage implements OnInit{
         this.chooseTreeNum=this.projectId;
         this.chooseTreeName=this.projectName;
         this.chooseTreelevel=this.projectlevel;
+        this.ischooseitem = !this.ischooseitem;
+        this.isisis = item.treeid;
         console.log(item);
     }
 

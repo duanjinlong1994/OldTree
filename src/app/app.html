@@ -2,7 +2,7 @@
 
     <ion-header no-border class="menu-image-height">
         <ion-navbar no-border style="padding:0" class="menu-image-height">
-            <img class="menu-image menu-image-height" src="assets/formBackground.png"/>
+            <img class="menu-image menu-image-height" src="assets/menu.jpg"/>
         </ion-navbar>
         <ion-item class="menu-header-image" no-lines>
             <ion-grid style="height: 100%;display: flex;padding: 0px" >
@@ -25,28 +25,28 @@
         <!--设置menu菜单-->
         <ion-list no-lines padding="10px">
             <ion-item (click)="gotoPageUserinfo()" menuToggle>
-                <ion-icon name='ios-person-outline' item-left></ion-icon>
-                个人资料
+                <ion-icon name='ios-home-outline' item-left></ion-icon>
+                个人主页
             </ion-item>
-            <!--<ion-item ion-item (click)="gotoPageTask()" menuToggle>-->
-                <!--<ion-icon name='notifications-outline' item-left></ion-icon>-->
-                <!--我的任务-->
-            <!--</ion-item>-->
-            <!--<ion-item ion-item (click)="gotoPageChangePassword()" menuToggle>-->
-                <!--<ion-icon name='settings-outline' item-left></ion-icon>-->
-                <!--修改密码-->
-            <!--</ion-item>-->
+            <ion-item ion-item (click)="gotoPageTask()" menuToggle>
+                <ion-icon name='notifications-outline' item-left></ion-icon>
+                我的任务
+            </ion-item>
+            <ion-item ion-item (click)="gotoPageChangePassword()" menuToggle>
+                <ion-icon name='ios-settings-outline' item-left></ion-icon>
+                修改密码
+            </ion-item>
             <ion-item ion-item (click)="gotoPageAbout()" menuToggle>
                 <ion-icon name='ios-information-circle-outline' item-left></ion-icon>
-                关于系统
+                关于
             </ion-item>
             <!--<ion-item ion-item (click)="gotoPageHelp()" menuToggle>-->
             <!--<ion-icon name='ios-help-circle-outline' item-left></ion-icon>-->
             <!--帮助-->
             <!--</ion-item>-->
             <ion-item ion-item (click)="logout()" menuToggle>
-                <ion-icon name='ios-log-out-outline' item-left></ion-icon>
-                注销账户
+                <ion-icon name='log-out' item-left></ion-icon>
+                退出
             </ion-item>
 
             <!--<button ion-button (click)="logout()" color="danger" full>退出</button>-->

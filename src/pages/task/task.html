@@ -3,6 +3,12 @@
         <ion-title>
             任务
         </ion-title>
+        <ion-buttons end >
+            <button ion-button icon-only >
+                <ion-icon name="more-re" ></ion-icon>
+            </button>
+        </ion-buttons>
+        
     </ion-navbar>
 </ion-header>
 
@@ -27,14 +33,14 @@
             <ion-grid text-center>
                 <ion-row>
                     <ion-col>
-                        <button ion-button small clear (click)="taskCreate()" class="btn-create">
+                        <button ion-button small clear (click)="taskCreate()" class="btn-create" color="headercolor">
                             <ion-icon name="ios-create-outline">
                                 创建
                             </ion-icon>
                         </button>
                     </ion-col>
                     <ion-col >
-                        <button ion-button small clear (click)="taskQuery()" class="btn-search">
+                        <button ion-button small clear (click)="taskQuery()" class="btn-search" color="headercolor">
                             <ion-icon name="ios-search">
                                 查询
                             </ion-icon>
@@ -53,7 +59,7 @@
                     <ion-col>
                         {{item.treeNum}}
                     </ion-col>
-                    <ion-col style="text-align: right;color: #007aff" (click)="taskDetailQuery(item)">
+                    <ion-col style="text-align: right;color: #33A1C9" (click)="taskDetailQuery(item)">
                         任务号:{{item.no}}
                     </ion-col>
                 </ion-row>

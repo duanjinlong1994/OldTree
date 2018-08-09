@@ -25,6 +25,8 @@ export class StatisticOfHomePage {
     private _chart: any;
     pointName : string = "";
     projectName : string = "";
+    cName : string="";
+    siteName : string ="";
     deviceId  : number = -1;
     deviceData: object = null;
     projectId : number = -1;
@@ -905,8 +907,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                           [0, 'rgb(124,181,236)'],
-                           [1, 'rgba(124,181,236,0)']
+                           [0, 'rgb(51,161,201)'],
+                           [1, 'rgba(51,161,201,0)']
                        ]
                     },
                     lineWidth: 1,
@@ -1006,8 +1008,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                           [0, 'rgb(124,181,236)'],
-                           [1, 'rgba(124,181,236,0)']
+                           [0, 'rgb(51,161,201)'],
+                           [1, 'rgba(51,161,201,0)']
                        ]
                     },
                     lineWidth: 1,
@@ -1182,8 +1184,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                           [0, 'rgb(124,181,236)'],
-                           [1, 'rgba(124,181,236,0)']
+                           [0, 'rgb(51,161,201)'],
+                           [1, 'rgba(51,161,201,0)']
                        ]
                     },
                     lineWidth: 1,
@@ -1354,8 +1356,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                           [0, 'rgb(124,181,236)'],
-                           [1, 'rgba(124,181,236,0)']
+                           [0, 'rgb(51,161,201)'],
+                           [1, 'rgba(51,161,201,0)']
                        ]
                     },
                     lineWidth: 1,
@@ -1608,8 +1610,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                            [0, 'rgb(124,181,236)'],
-                            [1, 'rgba(124,181,236,0)']
+                            [0, 'rgb(51,161,201)'],
+                            [1, 'rgba(51,161,201,0)']
                         ]
                     },
                     lineWidth: 1,
@@ -1796,8 +1798,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                            [0, 'rgb(124,181,236)'],
-                            [1, 'rgba(124,181,236,0)']
+                            [0, 'rgb(51,161,201)'],
+                            [1, 'rgba(51,161,201,0)']
                         ]
                     },
                     lineWidth: 1,
@@ -2076,8 +2078,8 @@ export class StatisticOfHomePage {
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                            [0, 'rgb(124,181,236)'],
-                            [1, 'rgba(124,181,236,0)']
+                            [0, 'rgb(51,161,201)'],
+                            [1, 'rgba(51,161,201,0)']
                         ]
                     },
                     lineWidth: 1,

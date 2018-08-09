@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { UserInfo } from '../model/UserInfo';
-//import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { HelpPage } from  '../pages/menu/help/help';
 import { AboutPage } from  '../pages/menu/about/about';
@@ -22,7 +22,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class MyApp {
   @ViewChild('content') nav;
   rootPage:any = LoginPage;
-    UserRealName:string="";
+    UserRealName:string="默认用户";
     userInfo:UserInfo;
   accountId:number;
 
@@ -38,7 +38,7 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      statusBar.backgroundColorByHexString("33A1C9");
       splashScreen.hide();
       this.checkPreviousAuthorization();
     });
@@ -65,7 +65,7 @@ export class MyApp {
                     this.http.post(url,body,options).map(res =>res.json()).subscribe(data => {
                                 console.log(data);
                                 this.accountService.setAccount(data);
-                                this.rootPage = HomePage;
+                                this.rootPage = TabsPage;
                             this.accountId=(this.accountService.getAccount() as any).accountId;
                             this.storageUserInfo(this.accountId);
 
@@ -113,8 +113,6 @@ export class MyApp {
 
     gotoPageUserinfo(){
       this.nav.push(UserInfoPage);
-        this.accountId=(this.accountService.getAccount() as any).accountId;
-        this.storageUserInfo(this.accountId);
     }
 
 

@@ -86,4 +86,107 @@ ion-app.ios [margin-bottom],
 ion-app.ios [margin-bottom] .scroll-content {
   margin-bottom: 1px;
 }
-
+.tabbar {
+  height: 9%;
+}
+.tabs-md[tabsLayout=icon-top] .has-icon .tab-button-text {
+  margin-top: 0px;
+}
+.tabs-md .tab-button-text {
+  font-size: 0.5rem;
+}
+.tabs-md .tab-button-icon {
+  margin-top: 0px;
+  height:60%;
+  min-width:1.5rem;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+  color: #00A3CC;
+}
+// .item-md {
+//   padding-left: 16px;
+//   min-height:1rem;
+//   height:10%;
+//   margin:0px 0px 0px 0px;
+//   padding-top:0px;
+//   font-size: inherit;
+//   border-bottom: 0.55px solid #c8c7cc;
+// }
+.oldtreelist{
+  border-bottom: 0.1px solid #d1cece;
+}
+.oldtreeitem{
+  padding-top:5%;
+  display: table-cell;
+  vertical-align:middle
+}
+.grid{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.button-md {
+  margin:0px 0px 0px 0px;
+}
+#img1 {
+  background:url("../assets/1_old.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img1:hover {
+  background:url("../assets/1_new.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img2 {
+  background:url("../assets/2_old.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img2:hover {
+  background:url("../assets/2_new.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img3 {
+  background:url("../assets/3_old.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img3:hover {
+  background:url("../assets/3_new.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:98%;
+}
+#img4 {
+  background:url("../assets/4_old.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img4:hover {
+  background:url("../assets/4_new.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img5 {
+  background:url("../assets/5_old.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#img5:hover {
+  background:url("../assets/5_new.png") no-repeat;
+  background-size: 100%;
+  height:100%;
+  width:100%;
+}
+#row1{
+  height:70px;
+}
