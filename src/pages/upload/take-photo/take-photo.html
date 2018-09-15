@@ -10,26 +10,14 @@
             选择照片
         </ion-title>
 
-        <ion-buttons right padding-right="10px">
-            <button type="button" ion-button block (click)="uploadImage()">上传</button>
-        </ion-buttons>
+
         </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-        <ion-row>
-            <ion-col col-2>
-                <button ion-button (click)="onSelectButtonClick()" clear style="font-size: small; color: #222222;">地址：</button>
-            </ion-col>
-            <ion-col col-10>
-                <button ion-button (click)="onSelectButtonClick()" clear class="selectButton" >{{organizationName}}
-                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
-                <button ion-button (click)="organChange()" clear class="selectButton" >{{projectName}}
-                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
-                <button ion-button (click)="projectChange()" clear class="selectButton" >{{collectionPointName}}
-                    <ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>
-            </ion-col>
-        </ion-row>
+
+
+
     <!--<ion-select  name="oraganization" [(ngModel)]="organization" (ionChange)="organChange()" placeholder="选择机构" interface="popover" style="max-width: 40%" >-->
     <!--<ion-option  [value]="organizationId" *ngIf="isHomeToUpload" selected="true" disabled>{{organizationName}}</ion-option>-->
     <!--<ion-option  [value]="organizationId" *ngIf="isTaskToUpload" selected="true" disabled>{{organizationName}}</ion-option>-->
@@ -64,11 +52,29 @@
 
 
 
-    <img [src]="avatarPath" width="100%" tappable (click)="selectPhotoMethod()">
 
-    <ion-item  class="note">
-        <ion-textarea type="text" [(ngModel)]="note" placeholder="照片描述..." rows="5" style="margin: 1px;" ></ion-textarea>
-    </ion-item>
+    <div style="text-align: center">
+    <img  [src]="avatarPath" width="90%" tappable (click)="selectPhotoMethod()" style="text-align: center">
+    </div>
+    <div style="text-align: center">
+        <ion-textarea type="text" [(ngModel)]="note" placeholder="添加照片描述..." rows="3" style="padding-left: 5%;margin-bottom:0;font-size: medium"  ></ion-textarea>
+    </div>
+        <ion-row>
+        <ion-col col-2>
+            <button ion-button (click)="onSelectButtonClick()" clear style="color: #222222;"><ion-icon name="ios-pin-outline"></ion-icon></button>
+        </ion-col>
+        <ion-col col-10>
+            <button ion-button (click)="onSelectButtonClick()" clear class="selectButton" icon-right>{{fullname}}
+                <ion-icon name="ios-arrow-forward-outline"  ></ion-icon></button>
+            <!--<button ion-button (click)="organChange()" clear class="selectButton" >{{projectName}}-->
+            <!--<ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>-->
+            <!--<button ion-button (click)="projectChange()" clear class="selectButton" >{{collectionPointName}}-->
+            <!--<ion-icon name="ios-arrow-down-outline" item-right></ion-icon></button>-->
+        </ion-col>
+    </ion-row>
+    <ion-buttons ion-button   round block >
+        <button type="button" ion-button block (click)="uploadImage()">上传</button>
+    </ion-buttons>
 
 </ion-content>
 

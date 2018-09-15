@@ -1,11 +1,14 @@
 page-take-photo {
   .note {
-    border: solid darkgray 1px;
+    //border: solid darkgray 1px;
     background: transparent;
-    height:20%;
-    background-image: none !important ;
-    border-bottom: none !important;
+    height:10%;
+    //background-image: none !important ;
+    //border-bottom: none !important;
     padding: 1px;
+    margin: 5px;
+    text-align: center;
+    max-width: 95%;
   }
 
   .select{
@@ -18,8 +21,10 @@ page-take-photo {
   }
 
   .selectButton{
-    font-size: small;
+    font-size: medium;
     padding: 0px;
-    max-width: 100%;
+    //max-width: 100%;
+    min-width: 100%;
+    background-color: #222222;
   }
 }

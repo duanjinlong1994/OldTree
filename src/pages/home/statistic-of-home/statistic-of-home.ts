@@ -4,6 +4,7 @@ import { HttpService } from "../../../providers/http-service/http-service";
 import { NativeService } from'../../../providers/native-service/native-service'
 import { Http, Headers, RequestOptions } from "@angular/http";
 import HighCharts from 'highcharts';
+import { DatePicker } from '@ionic-native/date-picker';
 /**
  * Generated class for the StatisticOfHomePage page.
  *
@@ -27,10 +28,12 @@ export class StatisticOfHomePage {
     projectName : string = "";
     cName : string="";
     siteName : string ="";
-    deviceId  : number = -1;
     deviceData: object = null;
     projectId : number = -1;
     collectId : number = -1;
+    deviceId  : number = -1;
+    treeId    : number = -1;
+    fullname:string="选择机构/树木/检测点";
 
     // 判断需要显示的图标
     isPM25Display          : boolean = false;
@@ -85,6 +88,8 @@ export class StatisticOfHomePage {
     timePic     = 0;
     //统计类型
     statisticType:number = -1;
+    title: string = "一天";
+    public timeCount: number = 0;
 
 
     constructor(public  navCtrl: NavController,
@@ -94,18 +99,21 @@ export class StatisticOfHomePage {
                 private alertCtrl: AlertController,
                 private httpService: HttpService,
                 private nativeService:NativeService,
+                private datePicker: DatePicker,
     ) {
         console.log(this.navParams.data);
-        // this.projectName = this.navParams.data[0].projectName;
-        // if(this.navParams.data[0].siteName){
-        //     this.pointName=this.navParams.data[0].siteName;
-        // }else{
-        //     this.pointName=this.navParams.data[0].name;
-        // }
-        // console.log(this.pointName);
-        // this.deviceId  = this.navParams.data[0].deviceId;
-        // this.collectId = this.navParams.data[0].id;
-         this.setUpTime();
+        this.projectName = this.navParams.data[0].cName;
+        if(this.navParams.data[0].siteName){
+            this.pointName=this.navParams.data[0].siteName;
+        }else{
+            this.pointName=this.navParams.data[0].name;
+        }
+        console.log(this.pointName);
+        this.deviceId  = this.navParams.data[0].deviceId;
+        this.collectId = this.navParams.data[0].id;
+        this.treeId = this.navParams.data[0].treeNum;
+        this.onNameChanged();
+         this.setUpTime(0);
     }
 
     ionViewDidLoad() {
@@ -199,36 +207,14 @@ export class StatisticOfHomePage {
 
 
     //统计默认显示一天的数据
-    setUpTime() {
-        this.startTime = this.getBeforeDate(7)+" 00:00:00";
+    setUpTime(timeInterval) {
+        this.startTime = this.getBeforeDate(timeInterval)+" 00:00:00";
         this.endTime = this.getBeforeDate(0)+" 23:59:59";
 
         console.log("start"+this.startTime);
     }
 
     //获取当前日期之前before天
-    getBeforeDate(before){
-        let n = before;
-        let d = new Date();
-        let year = d.getFullYear();
-        let mon=d.getMonth()+1;
-        let day=d.getDate();
-        if(day <= n){
-            if(mon>1) {
-                mon=mon-1;
-            }
-            else {
-                year = year-1;
-                mon = 12;
-            }
-        }
-        d.setDate(d.getDate()-n);
-        year = d.getFullYear();
-        mon=d.getMonth()+1;
-        day=d.getDate();
-        let s = year+"-"+(mon<10?('0'+mon):mon)+"-"+(day<10?('0'+day):day);
-        return s;
-    }
 
 
 
@@ -536,12 +522,11 @@ export class StatisticOfHomePage {
         console.log(startTime +"   "+endTime);
 
         //console.log(this.collectionPoint);
-        let url = this.httpService.getUrl()+"/getTempByPointID.do";
+        let url ="http://47.92.34.161:80/NoiseDust/getPm25ByPointID.do";// this.httpService.getUrl()+"/getTempByPointID.do";
         let headers = new Headers({
           'Content-Type': 'application/x-www-form-urlencoded'
         });
-        let body = "pointId="+this.collectId+"&startTime="+startTime+"&endTime="+endTime;
-        console.log(body);
+        let body = "pointId=2176"+"&startTime="+startTime+"&endTime="+endTime;//"pointId="+this.collectId+"&startTime="+startTime+"&endTime="+endTime;
         let options = new RequestOptions({
           headers: headers
         });
@@ -550,6 +535,7 @@ export class StatisticOfHomePage {
         this.http.post(url,body,options).map(res =>res.json()).subscribe(data =>{  //可替换为：    this.httpService.getAirTemperature(body).then(data=>{
           //显示图表
           setTimeout(()=>{
+              console.log(data);
             if (data.length > 0){
               if (data.length > 1){
                 this.tickInterval = data.length / 2;
@@ -563,7 +549,7 @@ export class StatisticOfHomePage {
                 let dt = new Date(data[i].time);
                 let xAxisDate = dt.toLocaleString();
                 xcategories.push(xAxisDate);
-                let yAxisDate = data[i].temperature;
+                let yAxisDate = data[i].pm25;// temperature;
                 categoriesOfTemperature.push(yAxisDate);
               }
               this.Xcategories = xcategories;
@@ -614,7 +600,7 @@ export class StatisticOfHomePage {
                 let dt = new Date(data[i].time);
                 let xAxisDate = dt.toLocaleString();
                 xcategories.push(xAxisDate);
-                let yAxisDate = data[i].temperature;
+                let yAxisDate = data[i].pm25;// temperature;
                 categoriesOfTemperature.push([xcategories,yAxisDate]);
               }
               this.Xcategories = xcategories;
@@ -1571,10 +1557,10 @@ export class StatisticOfHomePage {
                 resetZoom:"重置图片"
             },
             title: {
-                text: '空气温度实时数据',
+                text: '',
                 align: 'center',
                 verticalAlign: 'bottom',
-                // x: -20
+                 x: 20
             },
             credits : {
                 enabled : false
@@ -1586,7 +1572,7 @@ export class StatisticOfHomePage {
             },
             yAxis : {
                 floor: 0,
-                ceiling: 200,
+             //   ceiling: 200,
                 title : {
                     text : '空气温度'
                 },
@@ -2119,6 +2105,7 @@ export class StatisticOfHomePage {
 
 
     }   //土壤 PH值
+
     public ngOnDestroy() {
 
     }
@@ -2136,7 +2123,8 @@ export class StatisticOfHomePage {
     showchartOfAirTemper(){
         this.AirTempButton=false;
         this.isAirTemperDisplay=true;
-        this.QueryOfPm25();
+        this.statisticType=0;
+        this.QueryOfAirTemperature();
     }
 
     showchartOfAirHum(){
@@ -2146,6 +2134,183 @@ export class StatisticOfHomePage {
     }
 
 
+    showDatePicker()
+    {
+        this.datePicker.show({
+            date: new Date(),
+            mode: 'date',
+            androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+        }).then(
+            date => console.log('Got date: ', date),
+            err => console.log('Error occurred while getting date: ', err)
+        );
+        console.log("datepickeR!");
+    }
+    changeTime(myEvent) {
+        this.showRadio();
 
+    }
+
+
+
+    statistic() {
+
+        switch (this.statisticType){
+            case 0:
+                this.QueryOfAirTemperature();
+                break;
+            case 1:
+                this.QueryOfSoilTemperature();
+                break;
+            case 2:
+                this.QueryOfAirHumidity();
+                break;
+            case 3:
+                this.QueryOfSoilMoisture();
+                break;
+            case 4:
+                this.QueryOfInclination();
+                break;
+            case 5:
+                this.QueryOfSoilPH();
+                break;
+        }
+    }
+    showRadio() {
+        let alert = this.alertCtrl.create();
+        alert.setTitle('选择时间');
+
+        alert.addInput({
+            type: 'radio',
+            label: '一天',
+            value: '0',
+            checked: true
+        });
+        alert.addInput({
+            type: 'radio',
+            label: '三天',
+            value: '2',
+        });
+
+        alert.addInput({
+            type: 'radio',
+            label: '一周',
+            value: '6'
+        });
+
+
+
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'OK',
+            handler: data => {
+                this.changeTimePic = false;
+                this.timePic = data;
+                if (this.timePic == 0){
+                    this.timeChangeInterVal = "天";
+                    this.title = "一天";
+                }else if(this.timePic == 2){
+                    this.timeChangeInterVal = "三天";
+                    this.title = "三天";
+                }else {
+                    this.timeChangeInterVal = "周";
+                    this.title = "一周"
+                }
+                console.log(this.timePic);
+                this.setUpTime(this.timePic);
+                console.log("start"+this.startTime);
+                console.log("end"+this.endTime);
+
+                this.changeTimePic = true;
+                this.statistic();
+
+            }
+        });
+        alert.present().then(() =>{
+            // this.changeTimePic = true;
+            // this.statistic();
+        });
+    }
+
+
+    getTimeBefore(){
+        if (this.timeChangeInterVal == "天"){
+            this.timeCount ++;
+            console.log(this.timeCount);
+            this.setUpTime(this.timeCount);
+        }else if(this.timeChangeInterVal == "三天") {
+            this.timeCount = this.timeCount+3;
+            console.log(this.timeCount);
+            this.setUpTime(this.timeCount);
+        }else {
+            this.timeCount = this.timeCount + 7;
+            console.log(this.timeCount);
+            this.setUpTime(this.timeCount);
+        }
+        this.statistic();
+    }
+
+
+    getTimeAfter(){
+
+        let alert = this.alertCtrl.create({
+            title: '查询失败',
+            subTitle: '日期选择超出当前日期！',
+            buttons: ['返回'],
+        });
+
+        if (this.timeChangeInterVal == "天"){
+            if (this.timeCount >0) {
+                this.timeCount --;
+                this.setUpTime(this.timeCount);
+            }else {
+                alert.present().then();
+            }
+        }else if(this.timeChangeInterVal == "三天") {
+            if (this.timeCount > 3) {
+                this.timeCount = this.timeCount - 3;
+                this.setUpTime(this.timeCount);
+            }else {
+                alert.present().then();
+            }
+        }else {
+            if (this.timeCount > 7) {
+                this.timeCount = this.timeCount - 7;
+                this.setUpTime(this.timeCount);
+            }else {
+                alert.present().then();
+            }
+        }
+        this.statistic();
+    }
+
+    getBeforeDate(before){
+        var n = before;
+        var d = new Date();
+        var year = d.getFullYear();
+        var mon=d.getMonth()+1;
+        var day=d.getDate();
+        if(day <= n){
+            if(mon>1) {
+                mon=mon-1;
+            }
+            else {
+                year = year-1;
+                mon = 12;
+            }
+        }
+        d.setDate(d.getDate()-n);
+        year = d.getFullYear();
+        mon=d.getMonth()+1;
+        day=d.getDate();
+        let s = year+"-"+(mon<10?('0'+mon):mon)+"-"+(day<10?('0'+day):day);
+        return s;
+    }
+
+
+
+    onNameChanged(){
+        this.fullname=this.projectName+'('+this.treeId+')'+'/'+this.pointName;
+    }
 
 }

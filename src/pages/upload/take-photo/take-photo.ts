@@ -27,7 +27,7 @@ export class TakePhotoPage {
 
     accountId = 0;
     isChange: boolean = false;//头像是否改变标识
-    avatarPath: string = 'assets/camera.jpg';//用户默认头像
+    avatarPath: string = 'assets/add.png';//用户默认头像
     imageBase64: string;//保存头像base64,用于上传
     litImage: string;
     longitude = 108.00;//经度
@@ -40,9 +40,10 @@ export class TakePhotoPage {
     organizationId: number = -1;
     organizationName: string = "选择机构";
     projectId:number = -1;
-    projectName:string = "选择树木";
+    projectName:string = "树木";
     collectionPointId: number = -1;
-    collectionPointName: string = "选择检测点";
+    collectionPointName: string = "检测点";
+    fullname:string="选择机构/树木/检测点";
     taskId:number = -1;
 
     constructor(public navCtrl: NavController,
@@ -69,9 +70,9 @@ export class TakePhotoPage {
             this.projectName = this.navParams.get('projectName');
             this.collectionPointName = this.navParams.get('collectionPointName');
             this.collectionPointId = this.navParams.get('collectionPointId');
-
             this.projectId = this.projectId;
             this.collectionPointId = this.collectionPointId;
+            this.onNameChanged();
         }else if(typeof(this.navParams.get('isTaskToUpload'))!="undefined"){
             this.organizationId = this.navParams.get('organizationId');
             this.organizationName = this.navParams.get('organizationName');
@@ -81,6 +82,7 @@ export class TakePhotoPage {
             this.projectId = this.projectId;
             this.taskId = this.navParams.get('taskNo');
             this.projectChange();
+            this.onNameChanged();
         }
         // else if(typeof(this.navParams.get('isPopoverToUpload'))!="undefined") {
         //     console.log(this.navParams.data);
@@ -117,6 +119,7 @@ export class TakePhotoPage {
         // }
         else{
             this.getOrganization();
+            this.onNameChanged();
         }
 
         this.geolocation.getCurrentPosition().then((resp) =>{
@@ -147,7 +150,9 @@ export class TakePhotoPage {
         });
         this.http.post(url,body,options).map(res =>res.json()).subscribe(data => {
             this.organData.push(data);
+            this.onNameChanged();
         });
+
     }
     organChange() {
         this.organizationOut.emit(this.organizationId);
@@ -163,6 +168,7 @@ export class TakePhotoPage {
         this.http.post(url,body,options).map(res => res.json()).subscribe(data =>{
             this.projectData = data;
             this.selectProjAlert(this.projectData);
+            this.onNameChanged();
         });
 
     }
@@ -182,6 +188,7 @@ export class TakePhotoPage {
         this.http.post(url,body,options).map(res => res.json()).subscribe(data =>{
             this.collectionData = data;
             this.selectColleAlert(this.collectionData);
+            this.onNameChanged();
         });
     }
 
@@ -189,6 +196,7 @@ export class TakePhotoPage {
         this.collectionpointOut.emit(this.collectionPointId);
         this.getNameById(this.collectionPointId,'colle');
         console.log(this.collectionPointId+' '+this.projectId+' '+this.collectionPointId);
+        this.onNameChanged();
     }
 
 
@@ -224,7 +232,10 @@ export class TakePhotoPage {
         this.accountId = (this.accountService.getAccount() as any).accountId;
         if(typeof (this.imageBase64)==='undefined')
         {
-            this.nativeService.showAlert('请添加一张照片');
+            this.nativeService.showAlert('上传失败','请添加一张照片');
+        }
+        else if(this.organizationId==-1 || this.projectId==-1 || this.collectionPointId==-1){
+            this.nativeService.showAlert('上传失败','请选择具体地址');
         }
         else {
             // this.litImage = this.imageBase64;
@@ -513,7 +524,11 @@ export class TakePhotoPage {
             }
             console.log(this.collectionPointName);
         }
+    }
 
+
+    onNameChanged(){
+        this.fullname=this.organizationName+'/'+this.projectName+'/'+this.collectionPointName;
     }
 
 }
