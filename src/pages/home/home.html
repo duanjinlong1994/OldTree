@@ -6,12 +6,12 @@
             <ion-icon name="menu"></ion-icon>
         </button>
 
-        <ion-title class="navbartitle">主页</ion-title>
-        <!--<ion-buttons end>-->
-            <!--<button ion-button icon-only (click)="presentPopover($event)">-->
-                <!--<ion-icon name="more"></ion-icon>-->
-            <!--</button>-->
-        <!--</ion-buttons>-->
+        <ion-title ><p class="navbartitle1">主页</p></ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="menue"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
     <!-- <ion-toolbar color="headercolor" class = "iontoolbar">
 
@@ -63,20 +63,20 @@
         </ion-row>
     </ion-toolbar>  -->
 
-    <ion-row>
-        <ion-col class = "buttonclass" col-4 >
+    <ion-row style="background-color:#f3f0f0;border-left:8px solid white;border-right:8px solid white;border-top:10px solid white;">
+        <ion-col class = "buttonclass" col-4 id = "rowcol">
             <button ion-button color="dark" clear (click)="ischoose(0)">
                 <ion-label class="ionlabel">{{organizationName}}</ion-label>
                 <ion-icon name = "md-arrow-dropdown"></ion-icon>
             </button>
         </ion-col>
-        <ion-col class = "buttonclass" col-4>
+        <ion-col class = "buttonclass" col-4 id = "rowcol">
             <button ion-button color="dark" clear (click)="ischoose(1)">
                 <ion-label class="ionlabel">{{projectName}}</ion-label>
                 <ion-icon name = "md-arrow-dropdown"></ion-icon>
             </button>
         </ion-col>
-        <ion-col class = "buttonclass" col-4>
+        <ion-col class = "buttonclass" col-4 id = "rowcol">
             <button ion-button color="dark" clear (click)="ischoose(2)">
                 <ion-label class="ionlabel">{{collectionName}}</ion-label>
                 <ion-icon name = "md-arrow-dropdown"></ion-icon>
@@ -102,7 +102,7 @@
 
 
     <div position="relative" style="padding:0px 0px 0px 0px;">
-        <div *ngIf="isOrganchoose" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999">
+        <div *ngIf="isOrganchoose" style="width:100%;position:fixed;z-index:99999;background-color:#f3f0f0;border-left:8px solid white;border-right:8px solid white;border-bottom:5px solid white">
             <ion-list>
                 <button class="buttonclass" color="dark"(click)="organChange(000,'全部')" ion-button clear>
                     全部
@@ -114,14 +114,14 @@
                 </button>
             </ion-list>
         </div>
-        <div *ngIf="isProject" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999;max-height:200px;overflow:scroll">
+        <div *ngIf="isProject" style="width:100%;position:fixed;z-index:99999;max-height:200px;overflow:scroll;background-color:#f3f0f0;border-left:8px solid white;border-right:8px solid white;border-bottom:5px solid white">
             <ion-list  *ngFor="let item of projectData" (click)="projectChange(item.treeid,item.cname)" >
                 <button class="buttonclass" color="dark" ion-button clear>
                     {{item.cname}}
                 </button>
             </ion-list>
         </div>
-        <div *ngIf="isCollectionPoint" style="width:100%;position:fixed;background-color:#FFFFFF;z-index:99999;max-height:60%;overflow:scroll">
+        <div *ngIf="isCollectionPoint" style="width:100%;position:fixed;z-index:99999;max-height:60%;overflow:scroll;background-color:#f3f0f0;border-left:8px solid white;border-right:8px solid white;border-bottom:5px solid white">
             <ion-list  *ngFor="let item of collectionData" (click)="collectionChange(item.id,item.cName)" >
                 <button class="buttonclass" color="dark" ion-button clear>
                     {{item.cName}}
@@ -203,53 +203,112 @@
 
 
 
-                    <div *ngFor="let item of OldTreeData" class = "oldtreelist">
+                    <div *ngFor="let item of OldTreeData" class = "oldtreelist" style="padding-top:5px">
                     <ion-grid  (click)="getMessage(item)">
                         
-                            <ion-row row-4>
-                                <ion-col col-2>
+                            <ion-row row-4 >
+                                <ion-col col-2 id = "rowcol">
                                     <img src = "assets/2.jpg" >
                                 </ion-col>
                                 <ion-col>
-                                    <div class="oldtreeitem">
+                                    <!-- <div class="oldtreeitem">
+                                        
                                         古树名木保护系统{{prjName}}<br>
-                                        {{item.cname}}{{item.siteName}}
-                                    </div>
+                                        {{item.cname}}{{item.siteName}}<br>
+                                        陕西省西安市临潼区
+                                    </div> -->
+                                    <ion-row>
+                                        <div  style="font-size:1.1em" >古树名木保护系统{{prjName}}</div>
+                                    </ion-row>
+                                    <ion-row>
+                                        <div  style="font-size:0.8em;"  >{{item.cname}}{{item.siteName}}</div>
+                                    </ion-row>
+                                    <ion-row>
+                                        <div  style="font-size:0.8em;color:#868383" (click)="gotoMap(item.latitude,item.longitude,item.siteName,prjName)"><ion-icon name="ios-pin-outline"></ion-icon>详细位置</div>
+                                    </ion-row>
                                 </ion-col>
                             </ion-row>
 
                     </ion-grid>
-                    <div *ngIf="isisis==item.treeid&&ischooseitem">
-                            <ion-row padding-top="0px" id = "row1">
-                                <ion-col col-1>
-                                </ion-col>
-                                <ion-col col-2>
-                                    <button clear id = "img3" (click)="gotoTreeDetail(chooseTreeData)">
-                                    </button>
+                    <div *ngIf="isisis==item.treeid&&ischooseitem" >
+                            <ion-row padding-top="0px" padding-buttom="0px" >
+                                <!-- <ion-col col-1>
+                                </ion-col> -->
+                                <ion-col class = "col col-20" >
+                                    <ion-row id = "row1">
+                                        <button clear id = "img3" (click)="gotoTreeDetail(chooseTreeData)">
+                                        </button>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col style="text-align:center">详情</ion-col>
+                                    </ion-row>
                                 </ion-col>
                                 
-                                <ion-col col-2>
+                                <ion-col class = "col col-20">
+                                    <ion-row id = "row1">
                                         <button clear id = "img4" (click)="gotoDeviceInfo(chooseTreeData.deviceId)">
                                             </button>
+                                    </ion-row>
+                                    <ion-row>
+                                            <ion-col style="text-align:center">设备</ion-col>
+                                    </ion-row>
                                 </ion-col>
                                 
-                                <ion-col col-2>
+                                <ion-col class = "col col-20">
+                                    <ion-row id = "row1">
                                         <button clear id = "img2" (click)="gotoUpload(chooseTreeData)">
                                             </button>
+                                    </ion-row>
+                                    <ion-row>
+                                            <ion-col style="text-align:center">上传</ion-col>
+                                    </ion-row>
                                 </ion-col>
                                 
-                                <ion-col col-2>
-                                        <button clear id = "img5" (click)="gotoStatistic(chooseTreeData)">
+                                <ion-col class = "col col-20">
+                                    <ion-row id = "row1">
+                                        <button clear id = "img5" (click)="gotoStatistic(chooseTreeData)" >
                                             </button>
+                                    </ion-row>
+                                    <ion-row>
+                                            <ion-col style="text-align:center">数据</ion-col>
+                                    </ion-row>
                                 </ion-col>
                                 
-                                <ion-col col-2>
+                                <ion-col class = "col col-20">
+                                    <ion-row id = "row1">
                                         <button clear id = "img1" (click)="gotoTask(chooseTreeData)">
                                             </button>
+                                    </ion-row>
+                                    <ion-row>
+                                            <ion-col style="text-align:center">任务</ion-col>
+                                    </ion-row>
                                 </ion-col>
-                                <ion-col col-1>
-                                </ion-col>
+                                <!-- <ion-col col-1>
+                                </ion-col> -->
                             </ion-row>
+                            <!-- <ion-row padding-top="0px">
+                                
+                                <ion-col class = "col col-20" >
+                                    <div vertical-align = "center">详情</div>
+                                </ion-col>
+                                
+                                <ion-col class = "col col-20">
+                                        设备
+                                </ion-col>
+                                
+                                <ion-col class = "col col-20">
+                                        上传
+                                </ion-col>
+                                
+                                <ion-col class = "col col-20">
+                                        数据
+                                </ion-col>
+                                
+                                <ion-col class = "col col-20">
+                                        任务
+                                </ion-col>
+                                
+                            </ion-row> -->
                             <!-- <ion-row margin-top="0px">
                                 <ion-col col-1>
 

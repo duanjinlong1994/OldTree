@@ -314,6 +314,7 @@ export class HomePage implements OnInit{
             console.log("OldTreeData:");
             this.pageSize = data.length / 10;
             this.pageOther = data.length % 10;
+            console.log("OldTreeData : "+data);
             console.log("pageSize:"+this.pageSize+"pageOther"+this.pageOther);
             // if(num <= this.pageSize){
             //    for(var i = num*10;i<num*10+10;i++){
@@ -333,6 +334,7 @@ export class HomePage implements OnInit{
             //     console.log(data[j]);
             //  }
             this.OldTreeData1 = data;
+            
             for(var i = 0;i<10;i++){
                 this.OldTreeData.push(this.OldTreeData1[i]);
             }
@@ -506,8 +508,9 @@ export class HomePage implements OnInit{
     gotoMap(latitude :number,longitude :number,projectName :string,pointName :string){
         this.app.getRootNav().push(MapPage,[latitude,longitude,projectName,pointName]);
     }
-
+   
     gotoStatistic(point){
+        
         if(this.showCollectionPoint){
             this.app.getRootNav().push(StatisticOfHomePage,[point]);
         }else{
